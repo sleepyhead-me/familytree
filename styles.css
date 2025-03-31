@@ -1,142 +1,162 @@
-body {
-    background-color: #1a0d2b;
-    color: #fff;
-    font-family: Arial, sans-serif;
+/* Reset and Base Styles */
+* {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.family-tree {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.generation {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+body {
+    background: #1a0d2b;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
     position: relative;
 }
 
-.member {
+/* Tree Container */
+.tree-container {
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ff00ff;
+    gap: 60px;
+    position: relative;
+    z-index: 1; /* Ensure members are above canvas */
+}
+
+/* Generation */
+.generation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+}
+
+/* Family Member Container */
+.member {
+    background: #ff00ff;
     border: 2px solid #00eaff;
     border-radius: 15px;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00eaff;
-    margin: 0 10px;
     padding: 10px;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.3s ease;
+    text-align: center;
     cursor: pointer;
+    opacity: 0; /* For fade-in animation */
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px #00eaff;
+    animation: pulse 2s infinite; /* Pulsing glow effect */
 }
 
 .member:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00eaff;
+    box-shadow: 0 0 20px #00eaff;
 }
 
+/* Pulsing Animation */
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px #00eaff; }
+    50% { box-shadow: 0 0 20px #00eaff; }
+    100% { box-shadow: 0 0 10px #00eaff; }
+}
+
+/* Node (Image) */
 .node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.member-photo {
     width: 80px;
     height: 80px;
 }
 
-.member-name {
-    margin-top: 5px;
-    font-size: 0.9em;
-    color: #fff;
-    text-align: center;
-}
-
-/* Connections */
-.generation::before, .generation::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background-color: #00eaff;
-    top: 0;
-}
-
-.generation::before {
-    left: 50%;
-}
-
-.generation::after {
-    right: 50%;
-}
-
-.member:not(:last-child)::after {
-    content: '';
-    position: absolute;
+.member-photo {
     width: 100%;
-    height: 2px;
-    background-color: #ff00ff;
-    top: 50%;
-    left: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Modal */
+/* Member Name */
+.member-name {
+    display: block;
+    color: white;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
+    z-index: 1000; /* Above everything else */
 }
 
 .modal-content {
-    background-color: #1a0d2b;
+    background: #1a0d2b;
     border: 2px solid #00eaff;
-    box-shadow: 0 0 20px #ff00ff;
+    border-radius: 10px;
     padding: 20px;
     text-align: center;
+    box-shadow: 0 0 20px #ff00ff;
     position: relative;
+    max-width: 400px;
+    width: 90%;
 }
 
 .modal-photo {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    object-fit: cover;
     margin-bottom: 10px;
 }
 
 .modal-name {
     color: #00eaff;
+    text-shadow: 0 0 5px #00eaff;
     margin-bottom: 10px;
 }
 
 .modal-bio {
-    color: #fff;
+    color: white;
 }
 
 .close {
     position: absolute;
     top: 10px;
-    right: 10px;
-    color: #fff;
+    right: 15px;
     font-size: 24px;
+    color: #00eaff;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
 .close:hover {
     color: #ff00ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .generation {
+        gap: 20px;
+    }
+
+    .member {
+        padding: 8px;
+    }
+
+    .node {
+        width: 60px;
+        height: 60px;
+    }
+
+    .member-name {
+        font-size: 0.8em;
+    }
+
+    .tree-container {
+        padding: 20px;
+        gap: 40px;
+    }
 }
