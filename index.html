@@ -3,145 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Family Tree</title>
+    <title>Family Tree</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="family-tree">
-        <!-- Generation 1 -->
-        <div class="generation generation-1">
-            <div class="member" data-name="Samesh Uddin" data-bio="Great-Grandfather" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Samesh Uddin" class="member-photo">
-                    <span class="member-name">Samesh Uddin</span>
-                </div>
+    <div class="tree-container">
+        <!-- Canvas for Dynamic Connections -->
+        <canvas id="connectionCanvas" style="position: absolute; top: 0; left: 0; z-index: 0;"></canvas>
+
+        <!-- Generation 1: Great-Grandparents (Placeholder) -->
+        <div class="generation">
+            <div class="member" data-name="Great-Grandfather" data-bio="Ancestor of the family." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Great-Grandfather"></div>
+                <span class="member-name">Great-Grandfather</span>
             </div>
-            <div class="member" data-name="Sajon Necha" data-bio="Great-Grandmother" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Sajon Necha" class="member-photo">
-                    <span class="member-name">Sajon Necha</span>
-                </div>
+            <div class="member" data-name="Great-Grandmother" data-bio="Ancestor of the family." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Great-Grandmother"></div>
+                <span class="member-name">Great-Grandmother</span>
             </div>
         </div>
 
-        <!-- Generation 2 -->
-        <div class="generation generation-2">
-            <div class="member" data-name="Shahjahan Miah" data-bio="Grandfather" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Shahjahan Miah" class="member-photo">
-                    <span class="member-name">Shahjahan Miah</span>
-                </div>
+        <!-- Generation 2: Grandparents -->
+        <div class="generation">
+            <div class="member" data-name="Samesh Uddin" data-bio="Grandfather of the family." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Samesh Uddin"></div>
+                <span class="member-name">Samesh Uddin</span>
             </div>
-            <div class="member" data-name="Moyzan" data-bio="Grandmother" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Moyzan" class="member-photo">
-                    <span class="member-name">Moyzan</span>
-                </div>
+            <div class="member" data-name="Sajon Necha" data-bio="Grandmother of the family." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Sajon Necha"></div>
+                <span class="member-name">Sajon Necha</span>
             </div>
         </div>
 
-        <!-- Generation 3 -->
-        <div class="generation generation-3">
-            <div class="member" data-name="Shahjahan Miah" data-bio="Uncle" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Shahjahan Miah" class="member-photo">
-                    <span class="member-name">Shahjahan Miah</span>
-                </div>
+        <!-- Generation 3: Uncles, Aunts, and Parents -->
+        <div class="generation">
+            <div class="member" data-name="Shahjahan Miah" data-bio="Eldest uncle." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Shahjahan Miah"></div>
+                <span class="member-name">Shahjahan Miah</span>
             </div>
-            <div class="member" data-name="Ajahar Sikder" data-bio="Uncle" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Ajahar Sikder" class="member-photo">
-                    <span class="member-name">Ajahar Sikder</span>
-                </div>
+            <div class="member" data-name="Moyzan" data-bio="Wife of Shahjahan." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Moyzan"></div>
+                <span class="member-name">Moyzan</span>
             </div>
-            <div class="member" data-name="Sayed Hasan" data-bio="Father" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Sayed Hasan" class="member-photo">
-                    <span class="member-name">Sayed Hasan</span>
-                </div>
+            <div class="member" data-name="Ajahar Sikder" data-bio="Second uncle." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Ajahar Sikder"></div>
+                <span class="member-name">Ajahar Sikder</span>
             </div>
-            <div class="member" data-name="Rafiqul Islam" data-bio="Uncle" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Rafiqul Islam" class="member-photo">
-                    <span class="member-name">Rafiqul Islam</span>
-                </div>
+            <div class="member" data-name="Bokul Akter" data-bio="Wife of Ajahar." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Bokul Akter"></div>
+                <span class="member-name">Bokul Akter</span>
             </div>
-        </div>
-
-        <!-- Generation 4 -->
-        <div class="generation generation-4">
-            <div class="member" data-name="Bappy" data-bio="Me" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Bappy" class="member-photo">
-                    <span class="member-name">Bappy</span>
-                </div>
+            <div class="member" data-name="Sayed Hasan" data-bio="Father of Bappy." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Sayed Hasan"></div>
+                <span class="member-name">Sayed Hasan</span>
             </div>
-            <div class="member" data-name="Fahim Sikder" data-bio="Brother" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Fahim Sikder" class="member-photo">
-                    <span class="member-name">Fahim Sikder</span>
-                </div>
+            <div class="member" data-name="Kalpana Akter" data-bio="Mother of Bappy." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Kalpana Akter"></div>
+                <span class="member-name">Kalpana Akter</span>
             </div>
-            <div class="member" data-name="Mahim Sikder" data-bio="Brother" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Mahim Sikder" class="member-photo">
-                    <span class="member-name">Mahim Sikder</span>
-                </div>
+            <div class="member" data-name="Rafiqul Islam" data-bio="Youngest uncle." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Rafiqul Islam"></div>
+                <span class="member-name">Rafiqul Islam</span>
             </div>
-            <div class="member" data-name="Mojlu Sikder" data-bio="Cousin 1" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Mojlu Sikder" class="member-photo">
-                    <span class="member-name">Mojlu Sikder</span>
-                </div>
-            </div>
-            <div class="member" data-name="Monju Sikder" data-bio="Cousin 2" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Monju Sikder" class="member-photo">
-                    <span class="member-name">Monju Sikder</span>
-                </div>
+            <div class="member" data-name="Meuzina Akter" data-bio="Wife of Rafiqul." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Meuzina Akter"></div>
+                <span class="member-name">Meuzina Akter</span>
             </div>
         </div>
 
-        <!-- Generation 5 -->
-        <div class="generation generation-5">
-            <div class="member" data-name="Meherim Synthia" data-bio="Cousin's Child 1" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Meherim Synthia" class="member-photo">
-                    <span class="member-name">Meherim Synthia</span>
-                </div>
+        <!-- Generation 4: Me, Siblings, and Cousins -->
+        <div class="generation">
+            <div class="member" data-name="Mojlu Sikder" data-bio="Son of Shahjahan." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Mojlu Sikder"></div>
+                <span class="member-name">Mojlu Sikder</span>
             </div>
-            <div class="member" data-name="Mohsin Sikder" data-bio="Cousin's Child 2" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Mohsin Sikder" class="member-photo">
-                    <span class="member-name">Mohsin Sikder</span>
-                </div>
+            <div class="member" data-name="Beauty Akter" data-bio="Wife of Mojlu." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Beauty Akter"></div>
+                <span class="member-name">Beauty Akter</span>
             </div>
-            <div class="member" data-name="Mohima Akter" data-bio="Cousin's Child 3" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Mohima Akter" class="member-photo">
-                    <span class="member-name">Mohima Akter</span>
-                </div>
+            <div class="member" data-name="Monju Sikder" data-bio="Son of Shahjahan." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Monju Sikder"></div>
+                <span class="member-name">Monju Sikder</span>
             </div>
-            <div class="member" data-name="Fatema Akter" data-bio="Cousin's Child 4" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Fatema Akter" class="member-photo">
-                    <span class="member-name">Fatema Akter</span>
-                </div>
+            <div class="member" data-name="Jothi Akter" data-bio="Wife of Monju." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Jothi Akter"></div>
+                <span class="member-name">Jothi Akter</span>
             </div>
-            <div class="member" data-name="Samiul" data-bio="Cousin's Child 5" data-photo="https://via.placeholder.com/150">
-                <div class="node">
-                    <img src="https://via.placeholder.com/80" alt="Samiul" class="member-photo">
-                    <span class="member-name">Samiul</span>
-                </div>
+            <div class="member" data-name="Shanta Akter" data-bio="Daughter of Shahjahan." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Shanta Akter"></div>
+                <span class="member-name">Shanta Akter</span>
+            </div>
+            <div class="member" data-name="Faruk Miah" data-bio="Husband of Shanta." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Faruk Miah"></div>
+                <span class="member-name">Faruk Miah</span>
+            </div>
+            <div class="member" data-name="Bipu Sikder" data-bio="Son of Ajahar." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Bipu Sikder"></div>
+                <span class="member-name">Bipu Sikder</span>
+            </div>
+            <div class="member" data-name="Yeas Sikder" data-bio="Son of Ajahar." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Yeas Sikder"></div>
+                <span class="member-name">Yeas Sikder</span>
+            </div>
+            <div class="member" data-name="Bappy" data-bio="Me, son of Sayed Hasan." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Bappy"></div>
+                <span class="member-name">Bappy</span>
+            </div>
+            <div class="member" data-name="Fahim Sikder" data-bio="Brother of Bappy." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Fahim Sikder"></div>
+                <span class="member-name">Fahim Sikder</span>
+            </div>
+            <div class="member" data-name="Mahim Sikder" data-bio="Brother of Bappy." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Mahim Sikder"></div>
+                <span class="member-name">Mahim Sikder</span>
+            </div>
+            <div class="member" data-name="Aman Ullah" data-bio="Son of Rafiqul." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Aman Ullah"></div>
+                <span class="member-name">Aman Ullah</span>
+            </div>
+            <div class="member" data-name="Anmul Hasan" data-bio="Son of Rafiqul." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Anmul Hasan"></div>
+                <span class="member-name">Anmul Hasan</span>
+            </div>
+        </div>
+
+        <!-- Generation 5: Children -->
+        <div class="generation">
+            <div class="member" data-name="Meherim Synthia" data-bio="Daughter of Mojlu." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Meherim Synthia"></div>
+                <span class="member-name">Meherim Synthia</span>
+            </div>
+            <div class="member" data-name="Mohsin Sikder" data-bio="Son of Mojlu." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Mohsin Sikder"></div>
+                <span class="member-name">Mohsin Sikder</span>
+            </div>
+            <div class="member" data-name="Mohima Akter" data-bio="Daughter of Monju." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Mohima Akter"></div>
+                <span class="member-name">Mohima Akter</span>
+            </div>
+            <div class="member" data-name="Fatema Akter" data-bio="Daughter of Shanta." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Fatema Akter"></div>
+                <span class="member-name">Fatema Akter</span>
+            </div>
+            <div class="member" data-name="Samiul" data-bio="Son of Shanta." data-photo="https://via.placeholder.com/150">
+                <div class="node"><img class="member-photo" src="https://via.placeholder.com/80" alt="Samiul"></div>
+                <span class="member-name">Samiul</span>
             </div>
         </div>
     </div>
 
-    <!-- Modal Structure -->
-    <div id="modal" class="modal">
+    <!-- Modal -->
+    <div class="modal" id="familyModal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <img src="https://via.placeholder.com/150" alt="Modal Photo" class="modal-photo">
+            <span class="close">×</span>
+            <img class="modal-photo" src="" alt="Family Member">
             <h2 class="modal-name"></h2>
             <p class="modal-bio"></p>
         </div>
