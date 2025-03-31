@@ -1,0 +1,142 @@
+body {
+    background-color: #1a0d2b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.family-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.generation {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ff00ff;
+    border: 2px solid #00eaff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00eaff;
+    margin: 0 10px;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.member:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00eaff;
+}
+
+.node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-photo {
+    width: 80px;
+    height: 80px;
+}
+
+.member-name {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #fff;
+    text-align: center;
+}
+
+/* Connections */
+.generation::before, .generation::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #00eaff;
+    top: 0;
+}
+
+.generation::before {
+    left: 50%;
+}
+
+.generation::after {
+    right: 50%;
+}
+
+.member:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff00ff;
+    top: 50%;
+    left: 100%;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #1a0d2b;
+    border: 2px solid #00eaff;
+    box-shadow: 0 0 20px #ff00ff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.modal-name {
+    color: #00eaff;
+    margin-bottom: 10px;
+}
+
+.modal-bio {
+    color: #fff;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ff00ff;
+}
